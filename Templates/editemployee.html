@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+     <h1>edit Employee</h1>
+      <form action="/editemployee/{{employee['id']}}" method="post">
+       <label for="name">Employee Name</label><br>
+       <input type="text" id="employeename" name="employeename" value="{{employee['name']}}"
+              placeholder="Enter Employee Name" required><br><br>
+        <label for="email">Email</label><br> 
+         <input type="email" id="email" name="email" value="{{employee['email']}}"
+         placeholder="Enter your Email" required ><br><br>
+        <label>Phone Number</label><br>
+        <input type="tel" id="phonenumber" name="phonenumber" placeholder="Enter your phonenumber"value="{{employee['phone']}}"
+            required><br><br>
+        <label>Department</label><br>
+      <select id="department" name="department"value="{{employee['department']}}"
+             required><br><br>
+         <option value="select department">select department</option>
+         <option>IT</option> 
+         <option>HR</option>
+         <option>Finance</option>
+         <option>Marketing</option>
+         <option>Sales</option>     
+      </select><br><br>  
+      <label for="salary">Salary</label><br>
+      <input type="number" id="salary" name="salary" placeholder="Enter salary" value="{{employee['salary']}}"
+         required><br><br>
+      <label for="joindate">Joining Date</label><br>
+      <input type="date" id="joiningdate" name="joiningdate" placeholder="Enter joining date" value="{{employee['joiningdate']}}"
+         required><br><br>  
+      <label for="address">Address</label><br>
+      <textarea id="address" name="address">"{{employee['address']or'_'}}"
+       </textarea><br><br>
+      <div class="button">
+      <button type="submit" id="submit" class="update-btn">update Employee</button><br><br>
+      </div>
+    </form>
+    <a href="/employees" class="back-btn"> back to employees</a>
+  </div>
+</body>
+</html>
+    

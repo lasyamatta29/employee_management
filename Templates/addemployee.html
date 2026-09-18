@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddEmployee</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body{
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: white;
+      }
+      h1{
+        text-align: center;
+        color: #983276;
+        margin-top: 40px;
+        margin-bottom: 30px;
+      }
+      /*employee form*/
+      form{
+        background-color: rgb(227, 175, 227);
+        width: 400px;
+        margin: auto;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      }
+      label{
+        color: #0b0a0b;
+        font-weight: bold;
+      }
+      input
+      select{
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 18px;
+            border: 1px solid #a8a6a6;
+            border-radius: 5px;
+      }
+      input:focus,
+      select:focus{
+        border-color: rgb(241, 25, 241);
+        outline: none;
+      }
+      button{
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(128, 39, 128);
+        color: beige;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover{
+        background-color: #732d91;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+     <h1>Add Employee</h1>
+      <form action="/addemployee" method="post">
+       <label for="name">Employee Name</label><br>
+       <input type="text" id="employeename" name="employeename"
+              placeholder="Enter Employee Name" required><br><br>
+        <label for="email">Email</label><br> 
+         <input type="email" id="email" name="email"
+         placeholder="Enter your Email" required ><br><br>
+        <label>Phone Number</label><br>
+        <input type="tel" id="phonenumber" name="phonenumber" placeholder="Enter your phonenumber" required><br><br>
+        <label>Department</label><br>
+      <select id="department" name="department" required><br><br>
+         <option value="select department">select department</option>
+         <option>IT</option> 
+         <option>HR</option>
+         <option>Finance</option>
+         <option>Marketing</option>
+         <option>Sales</option>     
+      </select><br><br>  
+      <label for="salary">Salary</label><br>
+      <input type="text" id="salary" name="salary" placeholder="Enter salary" required><br><br>
+      <label for="joindate">Joining Date</label><br>
+      <input type="date" id="joiningdate" name="joiningdate" placeholder="Enter joining date" required><br><br>  
+      <label for="address">Address</label><br>
+      <textarea id="address" name="address"></textarea><br><br>
+      <div class="button">
+      <button type="submit" id="submit">Add Employee</button><br><br>
+      <button type="reset" id="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
