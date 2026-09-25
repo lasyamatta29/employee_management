@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color:white;
+        }
+        h1{
+            text-align: center;
+            color: blueviolet;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        /* search box */
+        .searchbox{
+            width: 400px;
+            margin: auto;
+            background-color: wheat;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgb(0,0,0,0.1);
+        }
+        label{
+            color: #2c0121;
+            font-weight: bold;
+        }
+        input{
+            width: 100%;
+            padding: 5px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input:focus{
+            border-color: #c86aac;
+            outline: none;
+        }
+        /* Search button */
+        .search-btn{
+            width: 100%;
+            padding: 10px;
+            background-color: #870f75;
+            color: wheat;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .search-btn:hover{
+            background-color: #de63d1;
+        }
+        /* Result */
+        .result{
+            width: 100%;
+            margin: 30px auto;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgb(237, 192, 219);
+            box-shadow: 0 3px 10px rgba(214, 95, 191, 0.1);
+        }
+        th{
+            background-color: #870f75;
+            color: #e5cfdf;
+            padding: 12px;
+        }
+        td{
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th:hover{
+            background-color: #f1e8f7;
+        }
+        .no-result{
+            text-align: center;
+            color: #777;
+            margin-top: 25px;
+            font-size: 18px;
+        }
+        /*theme buttons*/
+        .theme-buttons{
+                display:flex;
+                gap:10px;
+                margin-right:20px;
+        }
+        .theme-buttons a{
+                     color:white;
+                     text-decoration:none;
+                     border:1px solid #00bcd4;
+                     border-radius: 5px;
+                     font-size: 14px;
+        }
+        .theme-buttons a:hover{
+            background-color: #00bcd4;
+        }        
+        /* lightmode */
+        body.light{
+            background-color: #f5f5f5;
+            color: #222;
+        }   
+        body.light .content{
+             background-color: #f5f5f5;
+             color: #222;
+        }
+        body.light .content h1{
+            color: #222;
+        }
+        body.light .content p{
+            color: #555;
+        }
+        body.dark{
+            background-color: #121212;
+            color: white;
+        }   
+        body.dark .content{
+             background-color:#1e1e1e;
+             color:white ;
+        }
+        body.dark .content h1{
+          background-color:#1e1e1e;
+            color: white;
+        }
+        body.dark .content p{
+            color:#ddd;
+        }
+        button{
+            padding: 5px;
+            background-color: rgb(214, 36, 146);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body class="{{ theme }}">
+     <div id="theme-buttons">
+        
+        <a href="/set-theme/light">
+         <button> ☀ Light </button>
+        </a>
+       <a href="/set-theme/dark">
+         <button> 🌙 Dark </button>
+       </a>
+    </div>
+    <br><br>
+    <h1>Search Employee</h1>
+<div class="searchbox">
+<form action="/search" method="POST">
+    <lable>Employee Name</lable>
+    <input type="text" name="searchname" placeholder="Enter employee name" value="{{ searchname }}" required>
+    <button type="submit" class="search-btn">Search</button>
+</form>
+</div>
+{% if employees %}
+<div class="result">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Employee Name</th>
+            <th>Email</th>
+            <th>Phonenumber</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Joiningdate</th>
+            <th>Address</th>
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee[0] }}</td>
+            <td>{{ employee[1] }}</td>
+            <td>{{ employee[2] }}</td>
+            <td>{{ employee[3] }}</td>
+            <td>{{ employee[4] }}</td>
+            <td>{{ employee[5] }}</td>
+            <td>{{ employee[6] }}</td>
+            <td>{{ employee[7] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% elif searchname %}
+<p>No employees found with the name "{{ searchname }}"</p>
+{% endif %}
+
+</body>
+</html>

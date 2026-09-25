@@ -3,11 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Employee</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body{
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: white;
+      }
+      h1{
+        text-align: center;
+        color: #983276;
+        margin-top: 40px;
+        margin-bottom: 30px;
+      }
+      /*employee form*/
+      form{
+        background-color: rgb(227, 175, 227);
+        width: 400px;
+        margin: auto;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      }
+      label{
+        color: #0b0a0b;
+        font-weight: bold;
+      }
+      input
+      select{
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 18px;
+            border: 1px solid #a8a6a6;
+            border-radius: 5px;
+      }
+      input:focus,
+      select:focus{
+        border-color: rgb(241, 25, 241);
+        outline: none;
+      }
+      #submit{
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(59, 4, 45);
+        color: beige;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      #submit:hover{
+        background-color: #fa62ee;
+      }
+      /*theme buttons*/
+        .theme-buttons{
+                display:flex;
+                gap:10px;
+                margin-right:20px;
+        }
+        .theme-buttons a{
+                     color:white;
+                     text-decoration:none;
+                     border:1px solid #00bcd4;
+                     border-radius: 5px;
+                     font-size: 14px;
+        }
+        .theme-buttons a:hover{
+            background-color: #00bcd4;
+        }        
+        /* lightmode */
+        body.light{
+            background-color: #f5f5f5;
+            color: #222;
+        }   
+        body.light .content{
+             background-color: #f5f5f5;
+             color: #222;
+        }
+        body.light .content h1{
+            color: #222;
+        }
+        body.light .content p{
+            color: #555;
+        }
+        body.dark{
+            background-color: #121212;
+            color: white;
+        }   
+        body.dark .content{
+             background-color:#1e1e1e;
+             color:white ;
+        }
+        body.dark .content h1{
+          background-color:#1e1e1e;
+            color: white;
+        }
+        body.dark .content p{
+            color:#ddd;
+        }
+        button{
+            padding: 5px;
+            background-color: rgb(214, 36, 146);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>        
 </head>
-<body>
+<body class="{{ theme }}">
+   <div id="theme-buttons">
+        
+        <a href="/set-theme/light">
+         <button> ☀ Light </button>
+        </a>
+       <a href="/set-theme/dark">
+         <button> 🌙 Dark </button>
+       </a>
+    </div>
+    <br><br>
     <div class="container">
-     <h1>edit Employee</h1>
+     <h1>Edit Employee</h1>
       <form action="/editemployee/{{employee['id']}}" method="post">
        <label for="name">Employee Name</label><br>
        <input type="text" id="employeename" name="employeename" value="{{employee['name']}}"

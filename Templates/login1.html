@@ -5,71 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
         body{
-            font-family:arial, sans-serif;
-            background-color: #f4f7fc;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: aliceblue ;
+            text-align: center;
         }
-        /*Navbar*/
-        .navbar{
-            background-color:rgb(235, 140, 231);
-            padding: 15px 30px;
-            display:flex;
-            align-items:center;
-            justify-content: space-between;
+        h1{
+            color: #983276;
+            margin-top: 50px;
         }
-        /*logo*/
-        .logo{
-            color: #3a042a;
-            font-size: 22px;
+        form{
+            background-color: rgb(239, 113, 206);
+            width: 350px;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        label{
+            color: #45033a;
             font-weight: bold;
         }
-        /*Navigation links*/
-        .nav-links{
-            display:flex;
-            align-items: center;
-            list-style:none;
-            gap:20px;
-            color: #3a042a;
-        }
-        .nav-links a:hover{
-         color: #681a68;
-         text-decoration: none;
-         font-size: 16px;
-         padding: 8px 12px;
-         border-radius: 5px;
-         
-        }
-        /*login button*/
-        .login1-btn{
-            background-color: #74196e;
-            padding: 8px 15px;
+        input[type="text"],
+        input[type="password"]{
+            width: 90%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            color: antiquewhite;
         }
-        .login1-btn:hover{
-            background-color:#f092c4;
-            color:rgb(44, 2, 29)!important;
+        .loginbtn,
+        .resetbtn{
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
         }
-        /*Register butter*/
-        .register-btn{
-            background-color:#74196e;;
-            padding: 8px 15px;
-            border-radius:5px ;
-            color: antiquewhite;
+        .loginbtn{
+            background-color:#42043a;
         }
-        .register-btn:hover{
-            background-color: #f092c4;
-            color:rgb(44, 2, 29)!important;
+        .resetbtn{
+            background-color: #42043a;
+            margin-left: 10px;
         }
-        /*content*/
-        .content{
-            padding:50px;
-            text-align: center;
+        .loginbtn:hover{
+            background-color: #cf068f;
+        }
+        .resetbtn:hover{
+            background-color: #cf068f;
         }
         /*theme buttons*/
         .theme-buttons{
@@ -92,78 +76,81 @@
             background-color: #f5f5f5;
             color: #222;
         }   
-        body.light.content{
+        body.light .content{
              background-color: #f5f5f5;
              color: #222;
         }
-        body.light.content h1{
+        body.light .content h1{
             color: #222;
         }
-        body.light.content p{
+        body.light .content p{
             color: #555;
         }
-    </style>    
+        body.dark{
+            background-color: #121212;
+            color: white;
+        }   
+        body.dark .content{
+             background-color:#1e1e1e;
+             color:white ;
+        }
+        body.dark .content h1{
+            background-color:#1e1e1e;
+            color: white;
+        }
+        body.dark .content p{
+            color:#ddd;
+        }
+        button{
+            padding: 5px;
+            background-color: rgb(214, 36, 146);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
 </head>
-<body>
-     <nav class="navbar">
-    <div class="logo">
-        Employee Management System
-    </div>
-    
+<body class="{{ theme }}">
     <div id="theme-buttons">
         
         <a href="/set-theme/light">
-        Light
+          <button>☀ Light</button>
         </a>
        <a href="/set-theme/dark">
-        Dark
+         <button>🌙 Dark</button>
        </a>
     </div>
-    <ul class="nav-links">
-     <li>
-        <a href="/home">
-                Home
-        </a>
-     </li>
-     <li>
-        <a href="/employees">
-            Employee
-        </a>
-     </li>    
-     <li>
-        <a href="/addemployee">
-            Add Employee
-        </a>
-     </li>
-     <li>
-        <a href="/search">
-            Search
-        </a>
-     </li>   
-    <li>
-        <a href="/register">
-            <button type="submit" class="register-btn">Register</button>
-        </a>
-     </li>
-     <li>
-        <a href="/login1">
-          <button type="submit" class="login1-btn">Login</button>
-        </a>
-     </li>
-     </ul>
-    </nav>
-    <div><br><br>
-
-    <h3>Login</h3>
+    <br><br>
+    <h1>Login</h1>
     <form id="loginform" action="/login1" method="post">
-        <label>username:</label><br>
-        <input type="text" id="username" name="username">
+        <label>Username:</label><br>
+        <input type="text" id="username" name="username" placeholder="Enter Username" required>
         <br><br>
-        <label>password:</label><br>
-        <input type="password" id="password" name="password">
+        <label>Password:</label><br>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
         <br><br>
-        <button type="submit" value="register" id="loginbtn">Login</button>
-        <button type="reset" value="reset" id="resetbtn">Reset</button>
+        <button type="submit" value="register" class="loginbtn">Login</button>
+        <button type="reset" value="reset" class="resetbtn">Reset</button>
     </form>
+    <!-- <----register------- -->
+     <div class="regiter-link">
+        Don't have an account?
+        <a href="/register">
+            Register
+        </a>
+
+     </div>
+     <!-- {% with messages = get_flashed_messages() %} 
+  {% if messages %}
+    <ul>
+      {% for msg in messages %}
+        <li>{{ msg }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}-->
+
 </body>
 </html>       

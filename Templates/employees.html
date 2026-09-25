@@ -11,7 +11,7 @@
         }
          h1{
             text-align: center;
-            color: rgb(107, 88, 99);
+            color: #983276;
             margin-top:40px ;
          }
         table{
@@ -53,10 +53,74 @@
             cursor: pointer;
             font-size: 16px;
         }
-
+        /*theme buttons*/
+        .theme-buttons{
+                display:flex;
+                gap:10px;
+                margin-right:20px;
+        }
+        .theme-buttons a{
+                     color:white;
+                     text-decoration:none;
+                     border:1px solid #00bcd4;
+                     border-radius: 5px;
+                     font-size: 14px;
+        }
+        .theme-buttons a:hover{
+            background-color: #00bcd4;
+        }        
+        /* lightmode */
+        body.light{
+            background-color: #f5f5f5;
+            color: #222;
+        }   
+        body.light .content{
+             background-color: #f5f5f5;
+             color: #222;
+        }
+        body.light .content h1{
+            color: #222;
+        }
+        body.light .content p{
+            color: #555;
+        }
+        body.dark{
+            background-color: #121212;
+            color: white;
+        }   
+        body.dark .content{
+             background-color:#1e1e1e;
+             color:white ;
+        }
+        body.dark .content h1{
+          background-color:#1e1e1e;
+            color: white;
+        }
+        body.dark .content p{
+            color:#ddd;
+        }
+        button{
+            padding: 5px;
+            background-color: rgb(214, 36, 146);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
     </style>
 </head>
-<body>
+<body class="{{ theme }}">
+     <div id="theme-buttons">
+        
+        <a href="/set-theme/light">
+         <button> ☀ Light </button>
+        </a>
+       <a href="/set-theme/dark">
+         <button> 🌙 Dark </button>
+       </a>
+    </div>
+    <br><br>
     <h1>Employee Details</h1>
     <div class="table-container">
         <table  border="1">

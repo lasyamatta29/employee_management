@@ -6,70 +6,72 @@
     <title>Register</title>
     <style>
         *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body{
-            font-family:arial, sans-serif;
-            background-color: #f4f7fc;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: aliceblue;
         }
-        /*Navbar*/
-        .navbar{
-            background-color:rgb(235, 140, 231);
-            padding: 15px 30px;
-            display:flex;
-            align-items:center;
-            justify-content: space-between;
+        h1{
+           text-align: center;
+           color: #983276;
+           margin-top: 40px;
+           margin-bottom: 25px;
         }
-        /*logo*/
-        .logo{
-            color: #3a042a;
-            font-size: 22px;
+        form{
+            width: 400px;
+            margin: auto;
+            background-color:rgb(248, 149, 217);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        label{
+            color: #302;
             font-weight: bold;
         }
-        /*Navigation links*/
-        .nav-links{
-            display:flex;
-            align-items: center;
-            list-style:none;
-            gap:20px;
-            color: #3a042a;
-        }
-        .nav-links a:hover{
-         color: #681a68;
-         text-decoration: none;
-         font-size: 16px;
-         padding: 8px 12px;
-         border-radius: 5px;
-         
-        }
-        /*login button*/
-        .login1-btn{
-            background-color: #74196e;
-            padding: 8px 15px;
+        input[text="text"],
+        input[text="password"]{
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            color: antiquewhite;
+            font-size: 18px;
         }
-        .login1-btn:hover{
-            background-color:#f092c4;
-            color:rgb(44, 2, 29)!important;
+        input[type="text"]:focus,
+        input[type="password"]:focus{
+            border-color: #8e44ad;
+            outline: none;
+            padding: 7px;
         }
-        /*Register butter*/
+        .register-btn,
+        .reset-btn{
+            width: 100px;
+            padding: 10px 20x;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
         .register-btn{
-            background-color:#74196e;;
-            padding: 8px 15px;
-            border-radius:5px ;
-            color: antiquewhite;
+            background-color: #470537;
+            padding: 5px;
+        }
+        .reset-btn{
+            background-color: #470537;
+            margin-left: 10px;
+            padding: 5px;
+
         }
         .register-btn:hover{
-            background-color: #f092c4;
-            color:rgb(44, 2, 29)!important;
+            background-color: #732d91;
         }
-        /*content*/
-        .content{
-            padding:50px;
-            text-align: center;
+        .reset-btn:hover{
+            background-color: #732d91;
         }
         /*theme buttons*/
         .theme-buttons{
@@ -92,78 +94,63 @@
             background-color: #f5f5f5;
             color: #222;
         }   
-        body.light.content{
+        body.light .content{
              background-color: #f5f5f5;
              color: #222;
         }
-        body.light.content h1{
+        body.light .content h1{
             color: #222;
         }
-        body.light.content p{
+        body.light .content p{
             color: #555;
+        }
+        body.dark{
+            background-color: #121212;
+            color: white;
+        }   
+        body.dark .content{
+             background-color:#1e1e1e;
+             color:white ;
+        }
+        body.dark .content h1{
+            color: white;
+        }
+        body.dark .content p{
+            color:#ddd;
+        }
+        button{
+            padding: 5px;
+            background-color: rgb(214, 36, 146);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
         }
     </style>    
 </head>
-<body>
-    <nav class="navbar">
-    <div class="logo">
-        Employee Management System
-    </div>
-    
+<body class="{{ theme }}">
     <div id="theme-buttons">
         
         <a href="/set-theme/light">
-        Light
+         <button> ☀ Light </button>
         </a>
        <a href="/set-theme/dark">
-        Dark
+         <button> 🌙 Dark </button>
        </a>
     </div>
-    <ul class="nav-links">
-     <li>
-        <a href="/home">
-                Home
-        </a>
-     </li>
-     <li>
-        <a href="/employees">
-            Employee
-        </a>
-     </li>    
-     <li>
-        <a href="/addemployee">
-            Add Employee
-        </a>
-     </li>
-     <li>
-        <a href="/search">
-            Search
-        </a>
-     </li>   
-    <li>
-        <a href="/register">
-            <button type="submit" class="register-btn">Register</button>
-        </a>
-     </li>
-     <li>
-        <a href="/login1">
-          <button type="submit" class="login1-btn">Login</button>
-        </a>
-     </li>
-     </ul>
-    </nav>
-    <div><br><br>
+    <br><br>
         <h1>Registration Form</h1>
     </div>
     <form id="Registrationform" action="/register" method="post">
         <label >Fullname</label><br>
-        <input type="text" id="fullname" name="fullname" required ><br><br>
+        <input type="text" id="fullname" name="fullname" placeholder="Enter your Fullname" required ><br><br>
         <label >Username:</label><br>
-        <input type="text" id="username" name="username"  required ><br><br>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required ><br><br>
         <label >Password:</label><br>
-        <input type="password" id="password" name="password"  required><br><br>
-        <button type="submit" value="Register">Register</button>
-          <button type="reset" value="reset">Reset</button>
+        <input type="password" id="password" name="password" placeholder="Enter your password"  required><br><br>
+        <button type="submit" value="Register" class="register-btn">Register</button>
+        <button type="reset" value="reset" class="reset-btn">Reset</button>
     </form>
 </body>
 </html>       
